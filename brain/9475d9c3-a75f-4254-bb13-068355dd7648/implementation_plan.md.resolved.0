@@ -1,0 +1,46 @@
+# PII Detection Enhancement Plan
+
+## Goal
+Improve the "ToS Illuminator" risk analysis to explicitly and robustly detect PII (Personally Identifiable Information) collection and other severe privacy violations using regex-based rules. The system should flag sensitive data collection (SSN, Biometrics, Financial) even in test inputs.
+
+## User Review Required
+> [!IMPORTANT]
+> This change will relax the restriction that prevents multiple clauses of the same category (e.g., 'Privacy') from being shown. This ensures that if a ToS has multiple distinct privacy violations (e.g., "We sell data" AND "We collect your SSN"), both are highlighted.
+
+## Proposed Changes
+
+### `src/lib`
+
+#### [MODIFY] [mockAnalysis.ts](file:///c:/Users/GERSHOM%20DANI/.gemini/antigravity/scratch/tos-illuminator/src/lib/mockAnalysis.ts)
+- Update `RISK_PATTERNS` to include granular PII detection:
+    - **Biometric Data**: Fingerprints, face recognition, voice prints.
+    - **Government ID**: SSN, Passport, Driver's License.
+    - **Financial Info**: Credit card numbers, bank account details (not just "billing info").
+    - **Precise Location**: GPS, real-time location tracking.
+    - **Contacts/Social Graph**: Address book, contact list scraping.
+    - **Content Scanning**: Reading emails, private messages.
+- Modify the clause deduplication logic in [mockAnalyze](file:///c:/Users/GERSHOM%20DANI/.gemini/antigravity/scratch/tos-illuminator/src/lib/mockAnalysis.ts#81-174) function:
+    - Change from `!clauses.some(c => c.category === pattern.category)` to `!clauses.some(c => c.id === pattern.id)` (or similar logic to allow distinct risks of the same category).
+
+## Verification Plan
+
+### Automated Verification Script
+I will create a temporary test script `src/lib/test-pii.ts` to validate the regex patterns against sample inputs.
+
+1. **Test Cases**:
+    - "We collect your social security number and driver's license." (Should be High Risk)
+    - "We may scan your face for authentication." (Should be High Risk)
+    - "We track your precise GPS location at all times." (Should be High Risk)
+    - "We read your private messages and emails." (Should be High Risk)
+    - Safe text: "We collect your email for login." (Should be Low/Moderate Risk, not High)
+
+2. **Execution**:
+    - Run `npx tsx src/lib/test-pii.ts` (I'll need to check if I can run tsx or node with loader, or just compile).
+    - Alternatively, since `vite` handles TS, I can run a vitest test if available, or just a simple node script using `ts-node` if available (it's not in package.json).
+    - **Fallback**: I'll create a simple [.js](file:///c:/Users/GERSHOM%20DANI/.gemini/antigravity/scratch/tos-illuminator/eslint.config.js) test script that imports the logic if I convert it to CommonJS, or simpler: I will just use the browser to verify.
+    - **Better**: I'll add a temporary "Test" button in the UI or just use the main input to paste these strings.
+
+### Manual Verification
+1. Open the app link.
+2. Paste the "Test Cases" strings into the analyzer.
+3. Verify that the score reflects High Risk (8-10) and specific clauses are shown.

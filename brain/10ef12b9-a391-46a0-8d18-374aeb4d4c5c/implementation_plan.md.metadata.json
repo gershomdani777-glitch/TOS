@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Implementation plan for ToS Illuminator.\n- Tech Stack: Vite + React, Vanilla CSS.\n- Key Features: Landing page, ToS Analyzer (Mock), Risk Score visualization.\n- Design: Premium, dark/soft white mode, interactive.",
+  "updatedAt":  "2026-01-10T15:59:11.467045800Z"
+}

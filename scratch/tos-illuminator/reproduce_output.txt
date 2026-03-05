@@ -1,0 +1,27 @@
+Running risk detection tests...
+
+Text: "We sell your data to third parties."
+Score: 8
+Risk Level: High
+Detected Clauses: data-sell
+---
+Text: "You agree to mandatory arbitration."
+Score: 8
+Risk Level: High
+Detected Clauses: arbitration
+---
+Text: "We collect your social security number."
+Score: 8
+Risk Level: High
+Detected Clauses: pii-ssn-govt
+---
+Text: "Arbitration is binding."
+Score: 8
+Risk Level: High
+Detected Clauses: arbitration
+---
+Text: "We share your location with partners."
+Score: 8
+Risk Level: High
+Detected Clauses: pii-location-tracking
+---

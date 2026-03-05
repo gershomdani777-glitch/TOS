@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Comprehensive rewrite of the risk detection logic to capture a wider range of high-risk terms and clauses.",
+  "updatedAt": "2026-01-21T16:24:17.204893900Z",
+  "version": "1"
+}

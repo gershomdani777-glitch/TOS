@@ -1,0 +1,35 @@
+# Improve Risk Detection Logic
+
+The current risk detection logic relies on strict regex patterns that require specific word orders and limited vocabulary. This causes the system to miss high-risk clauses like "We sell your data" or "Mandatory arbitration" if the phrasing doesn't exactly match the expectations.
+
+## User Review Required
+> [!IMPORTANT]
+> This change modifies the core scoring logic. While it aims to catch more high-risk content, it may slightly increase false positives if the text mentions these keywords in a safe context (e.g., "We do *not* sell your data").
+
+## Proposed Changes
+
+### Logic Layer
+
+#### [MODIFY] [mockAnalysis.ts](file:///c:/Users/GERSHOM%20DANI/.gemini/antigravity/scratch/tos-illuminator/src/lib/mockAnalysis.ts)
+
+-   **Update `RISK_PATTERNS` regexes**:
+    -   `pii-ssn-govt`: Allow flexible order (collect ... ID OR ID ... collect).
+    -   `pii-financial`: Add "payment details", "credit info". Allow flexible order.
+    -   `pii-location`: Allow simple "location" if combined with "precise" or "gps" isn't present but "track" is. actually, "track your location" is strong enough.
+    -   `data-sell`: Add "data" to the target list (previously required "personal data"). Allow flexible order.
+    -   `arbitration`: Allow "Mandatory arbitration" (adjective before noun).
+    -   `ip-rights`: Relax requirements for "perpetual license".
+
+-   **Refactor Regex Structure**:
+    -   Where safe, use [(A.{0,X}B|B.{0,X}A)](file:///c:/Users/GERSHOM%20DANI/.gemini/antigravity/scratch/tos-illuminator/reproduce_issue.ts#11-22) pattern to handle word swaps.
+
+## Verification Plan
+
+### Automated Tests
+-   Run [reproduce_issue.ts](file:///c:/Users/GERSHOM%20DANI/.gemini/antigravity/scratch/tos-illuminator/reproduce_issue.ts) before and after changes.
+-   Expect `We sell your data to third parties` to be detected as High Risk.
+-   Expect `You agree to mandatory arbitration` to be detected as High Risk.
+-   Expect `We share your location` to be detected as High Risk.
+
+### Manual Verification
+-   Run the app (`npm run dev`) and paste these phrases into the input box to see the highlighting and scoring.

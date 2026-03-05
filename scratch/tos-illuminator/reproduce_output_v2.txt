@@ -1,0 +1,62 @@
+Running EXPANDED risk detection tests...
+
+Text: "We sell your data to third parties."
+Score: 8
+Risk Level: High
+Detected Clauses: data-sell
+---
+Text: "You agree to mandatory arbitration."
+Score: 8
+Risk Level: High
+Detected Clauses: arbitration
+---
+Text: "We collect your social security number."
+Score: 8
+Risk Level: High
+Detected Clauses: pii-ssn-govt
+---
+Text: "We reserve the right to modify these terms at any time without notice."
+Score: 8
+Risk Level: High
+Detected Clauses: unilateral-change
+---
+Text: "You waive your right to a trial by jury."
+Score: 8
+Risk Level: High
+Detected Clauses: arbitration
+---
+Text: "We obtain rights to all your content forever."
+Score: 8
+Risk Level: High
+Detected Clauses: ip-grab
+---
+Text: "You agree to indemnify us for everything."
+Score: 8
+Risk Level: High
+Detected Clauses: indemnification
+---
+Text: "We are not liable for any damages regardless of cause."
+Score: 8
+Risk Level: High
+Detected Clauses: liability-cap
+---
+Text: "This subscription automatically renews every month."
+Score: 5
+Risk Level: Moderate
+Detected Clauses: auto-renewal
+---
+Text: "You waive all moral rights to your content."
+Score: 8
+Risk Level: High
+Detected Clauses: moral-rights
+---
+Text: "We share your info with our marketing partners."
+Score: 8
+Risk Level: High
+Detected Clauses: third-party-sharing
+---
+Text: "We collect your biometric data for security."
+Score: 8
+Risk Level: High
+Detected Clauses: pii-biometrics
+---

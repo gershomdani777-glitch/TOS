@@ -1,0 +1,26 @@
+# Risk Detection Logic Improvements
+
+I have improved the risk analysis logic to catch more high-risk clauses by making the regex patterns more flexible and robust.
+
+## Changes
+-   **Enhanced Regex Patterns**: Updated `RISK_PATTERNS` in [src/lib/mockAnalysis.ts](file:///c:/Users/GERSHOM%20DANI/.gemini/antigravity/scratch/tos-illuminator/src/lib/mockAnalysis.ts) to handle:
+    -   Flexible word ordering (e.g., "sell your data" vs "data sell").
+    -   Synonyms (e.g., "payment details", "user location").
+    -   "Share your location" detection.
+    -   "Mandatory arbitration" (adjective-noun) support.
+
+## Verification Results
+
+I ran a reproduction script with clauses that were previously missed or scored low. All now trigger High risk warnings.
+
+| Text Clause | Previous Score | New Score | Risk Level |
+| :--- | :--- | :--- | :--- |
+| "We sell your data to third parties." | Low | **8** | **High** |
+| "You agree to mandatory arbitration." | Low | **8** | **High** |
+| "We collect your social security number." | **8** (Pass) | **8** | **High** |
+| "We share your location with partners." | Low | **8** | **High** |
+
+## How to Verify
+1.  Open the application at [http://localhost:5173/](http://localhost:5173/).
+2.  Paste any of the phrases above into the analyzer.
+3.  Observe the **High Risk** badge and the red highlighting on the detected terms.

@@ -1,0 +1,24 @@
+# Tasks - ToS Illuminator
+
+- [ ] Project Initialization <!-- id: 0 -->
+    - [ ] Create detailed implementation plan <!-- id: 1 -->
+    - [ ] Initialize Vite React project <!-- id: 2 -->
+    - [ ] Set up project structure and clean up boilerplate <!-- id: 3 -->
+- [ ] Core Design System & UI Foundation <!-- id: 4 -->
+    - [ ] Create `index.css` with global variables (colors, typography) <!-- id: 5 -->
+    - [ ] Implement utility classes/styles for buttons, cards, layout <!-- id: 6 -->
+- [ ] Landing Page Implementation <!-- id: 7 -->
+    - [ ] Build Hero section with tagline and CTA <!-- id: 8 -->
+    - [ ] Build "Problem Explanation" section <!-- id: 9 -->
+    - [ ] Build "How it Works" section with icons <!-- id: 10 -->
+    - [ ] Build Sample Red-Flag Clause Preview <!-- id: 11 -->
+    - [ ] Add Trust & Ethics Messaging / Footer <!-- id: 12 -->
+- [ ] Application Logic & Assessment Interface <!-- id: 13 -->
+    - [ ] Create Input/Upload Component <!-- id: 14 -->
+    - [ ] Implement Mock AI Analysis Logic (simulating parsing/scoring) <!-- id: 15 -->
+    - [ ] Create Results Dashboard (Risk Score, Flagged Clauses) <!-- id: 16 -->
+    - [ ] Implement Clause Detail/Card View with "Plain English" translations <!-- id: 17 -->
+- [ ] Verification & Polish <!-- id: 18 -->
+    - [ ] Ensure responsive design on all sizes <!-- id: 19 -->
+    - [ ] Verify accessibility and SEO tags <!-- id: 20 -->
+    - [ ] Create walkthrough artifact <!-- id: 21 -->
