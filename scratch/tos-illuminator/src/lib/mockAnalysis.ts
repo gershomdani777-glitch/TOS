@@ -30,7 +30,7 @@ interface RiskPattern {
  * Helper to build flexible regexes.
  * allowFlip: if true, matches "A...B" OR "B...A"
  */
-function createFlexibleRegex(termA: string, termB: string, dist: number = 100, allowFlip = true): RegExp {
+export function createFlexibleRegex(termA: string, termB: string, dist: number = 100, allowFlip = true): RegExp {
     const patternA = `${termA}.{0,${dist}}${termB}`;
     const patternB = `${termB}.{0,${dist}}${termA}`;
     return allowFlip
@@ -41,6 +41,15 @@ function createFlexibleRegex(termA: string, termB: string, dist: number = 100, a
 // Configuration of Risk Patterns
 const RISK_PATTERNS: RiskPattern[] = [
     // --- CRITICAL PRIVACY & PII ---
+    {
+        id: 'pii-general',
+        category: 'Privacy',
+        risk: 'Moderate',
+        scoreWeight: 6,
+        regex: /(ask for|collect|gather|store|require|process).{0,50}(personal (info|information|data)|personally identifiable information|pii|contact (info|details))/i,
+        simplified: "Collects personal information.",
+        explanation: "The service gathers standard personal data. Review their privacy policy to understand how this info is used and secured."
+    },
     {
         id: 'pii-ssn-govt',
         category: 'Privacy',
