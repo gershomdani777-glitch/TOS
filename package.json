@@ -1,0 +1,14 @@
+{
+  "name": "antigravity-workspace",
+  "version": "1.0.0",
+  "description": "Workspace for TOS Illuminator and other projects",
+  "private": true,
+  "scripts": {
+    "dev:tos": "npm run dev --prefix scratch/tos-illuminator",
+    "build:tos": "npm run build --prefix scratch/tos-illuminator",
+    "install:tos": "npm install --prefix scratch/tos-illuminator"
+  },
+  "workspaces": [
+    "scratch/*"
+  ]
+}
