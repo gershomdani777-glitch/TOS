@@ -1,12 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
-// Import Scan and Results pages later when they are created
-import { Scanner } from './pages/Scanner'; // Will create next
-import { Results } from './pages/Results'; // Will create next
-
-
+import { Scanner } from './pages/Scanner';
+import { Results } from './pages/Results';
 
 function App() {
   return (
@@ -16,9 +13,9 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* Using temporary placeholders if real components not actively exported yet, but I will create them shortly. */}
             <Route path="/scan" element={<Scanner />} />
             <Route path="/results" element={<Results />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <Footer />

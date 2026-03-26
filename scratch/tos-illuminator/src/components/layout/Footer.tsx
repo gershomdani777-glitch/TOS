@@ -1,4 +1,5 @@
 import { ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
     return (
@@ -17,7 +18,7 @@ export function Footer() {
                     <div>
                         <h4 className="font-semibold mb-4">Product</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><a href="/scan" className="hover:text-foreground">Scanner</a></li>
+                            <li><Link to="/scan" className="hover:text-foreground">Scanner</Link></li>
                             <li><a href="/#how-it-works" className="hover:text-foreground">How it Works</a></li>
                         </ul>
                     </div>
