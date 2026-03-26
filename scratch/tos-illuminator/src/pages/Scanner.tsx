@@ -6,7 +6,7 @@ import { UploadCloud, FileText, Loader2, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Simple Textarea component since we didn't create it in UI folder yet
-const SimpleTextarea = ({ className, ...props }: any) => (
+const SimpleTextarea = ({ className, ...props }: React.TextareaHTMLAttributes<HTMLTextAreaElement>) => (
     <textarea
         className={`flex min-h-[300px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
         {...props}
@@ -62,7 +62,7 @@ export function Scanner() {
                         <SimpleTextarea
                             placeholder="Paste legal text here..."
                             value={text}
-                            onChange={(e: any) => setText(e.target.value)}
+                            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setText(e.target.value)}
                         />
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">

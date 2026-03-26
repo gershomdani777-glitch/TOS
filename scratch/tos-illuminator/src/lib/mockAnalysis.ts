@@ -26,17 +26,6 @@ interface RiskPattern {
     explanation: string;
 }
 
-/**
- * Helper to build flexible regexes.
- * allowFlip: if true, matches "A...B" OR "B...A"
- */
-export function createFlexibleRegex(termA: string, termB: string, dist: number = 100, allowFlip = true): RegExp {
-    const patternA = `${termA}.{0,${dist}}${termB}`;
-    const patternB = `${termB}.{0,${dist}}${termA}`;
-    return allowFlip
-        ? new RegExp(`(${patternA}|${patternB})`, 'i')
-        : new RegExp(patternA, 'i');
-}
 
 // Configuration of Risk Patterns
 const RISK_PATTERNS: RiskPattern[] = [
